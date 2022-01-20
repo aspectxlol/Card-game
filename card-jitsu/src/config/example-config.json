@@ -1,0 +1,5 @@
+{
+    "token": "YOUR TOKEN HERE",
+    "guildId": "GUILD ID",
+    "clientId": "CLIENT ID FROM THE DISCORD DEV PORTAL"
+}
