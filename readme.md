@@ -1,2 +1,2 @@
 #Discord bot 
-Simple Discord bot with 
+Simple Discord bot with card
