@@ -1,2 +1,1 @@
-# Discord bot 
-Discord bot that talks to backend plays card jitsu using api and backend stuff 
+#Discord bot that plays card jitsu using api and backend stuff  
