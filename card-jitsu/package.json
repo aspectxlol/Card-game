@@ -1,0 +1,20 @@
+{
+  "name": "hystats",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/rest": "^0.2.0-canary.0",
+    "axios": "^0.25.0",
+    "colors": "^1.4.0",
+    "discord-api-types": "^0.26.1",
+    "discord.js": "^13.6.0",
+    "moment": "^2.29.1"
+  }
+}

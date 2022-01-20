@@ -1,0 +1,10 @@
+# Packages
+
+/card-jitsu/node_modules
+/card-jitsu/package-lock.json
+/card-jitsu-backend/node_modules
+/card-jitsu-backend/package-lock.json
+
+# dont want to share my token 
+
+/card-jitsu/src/config/config.json
