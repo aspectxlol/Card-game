@@ -28,6 +28,7 @@ module.exports = {
 
             axios.get('http://localhost:3001/hand')
                 .then((response) => {
+                    interaction.reply({content: "1", ephemeral: true})
                     console.log(response.data);
                 })
                 .catch(function (error) {
