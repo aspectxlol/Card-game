@@ -19,7 +19,7 @@ class Game {
     }  
     
 
-    InitRound() {
+    async InitRound() {
         this.RoundInit = true
         this.RoundTime = moment().format('MMMM Do YYYY, h:mm:ss a')
         this.RoundId = id()
@@ -27,9 +27,11 @@ class Game {
         return 'Successfully initialize a round'
     }
 
-    endRound() {
+    async endRound() {
         this.RoundInit = false
         this.RoundTime = moment().format('MMMM Do YYYY, h:mm:ss a')
+
+        return 'Successfully end a round'
     }
 }
 

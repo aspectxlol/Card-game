@@ -28,7 +28,17 @@ module.exports = {
 
             axios.get('http://localhost:3001/hand')
                 .then((response) => {
-                    interaction.reply({content: "1", ephemeral: true})
+                    const handEmbed = new MessageEmbed()
+                        .setTitle(`Your hand`)
+                        .setColor('BLUE')
+                        .addFields(
+                            {name: `${response.data[0].Type}`, value: `${response.data[0].Score}`, inline: true},
+                            {name: `${response.data[1].Type}`, value: `${response.data[1].Score}`, inline: true},    
+                            {name: `${response.data[2].Type}`, value: `${response.data[2].Score}`, inline: true},
+                        )
+
+
+                    interaction.reply({content: null, embeds: [handEmbed], ephemeral: false})
                     console.log(response.data);
                 })
                 .catch(function (error) {

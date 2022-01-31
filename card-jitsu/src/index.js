@@ -1,10 +1,16 @@
 const fs = require('fs');
 const { Client, Collection, Intents } = require('discord.js');
-const { token } = require('./config/config.json');
+const { token, uri } = require('./config/config.json');
 const moment = require('moment');
+const mongoose = require('mongoose');
 require('colors')
 
-const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
+const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
+
+
+mongoose.connect('mongodb://127.0.0.1:27017', () => {
+	console.log('Connected')
+})
 
 client.commands = new Collection();
 const commandFiles = fs.readdirSync('./src/commands').filter(file => file.endsWith('.js'));
