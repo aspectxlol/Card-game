@@ -8,7 +8,10 @@ require('colors')
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 
 
-mongoose.connect('mongodb://127.0.0.1:27017', () => {
+mongoose.connect('mongodb://127.0.0.1:27017', (err) => {
+	if(err){
+		console.log(`${client.user.username}`.blue + `[Database]`.red + `: Connected to the database at ${moment().format('MMMM Do YYYY, h:mm:ss a')}`)
+	}
 	console.log('Connected')
 })
 
@@ -39,4 +42,4 @@ client.on('interactionCreate', async interaction => {
 	}
 });
 
-client.login(token);
+client.login(token)
