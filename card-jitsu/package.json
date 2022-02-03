@@ -4,8 +4,8 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "start": "node src/index.js",
-    "register": "node src/deploy-commands.js"
+    "start": "nodemon src/index.js",
+    "register": "nodemon src/deploy-commands.js"
   },
   "keywords": [],
   "author": "Aspectx",

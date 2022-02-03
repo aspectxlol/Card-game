@@ -7,13 +7,29 @@ require('colors')
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 
+client.once('ready', () => {
+	console.log(`[Bot]`.blue + `[LogIn]`.cyan + `:Logged in to ${client.user.tag} at ${moment().format('MMMM Do YYYY, h:mm:ss a')}`);
+});
 
-mongoose.connect('mongodb://127.0.0.1:27017', (err) => {
+mongoose.connect('mongodb://127.0.0.1:27017/cardgame', (err) => {
 	if(err){
-		console.log(`${client.user.username}`.blue + `[Database]`.red + `: Connected to the database at ${moment().format('MMMM Do YYYY, h:mm:ss a')}`)
+		console.error(err)
+		return;
 	}
-	console.log('Connected')
+
+	console.log(`[Bot]`.blue + `[Database]`.red + `: Connected to the database at ${moment().format('MMMM Do YYYY, h:mm:ss a')}`)
 })
+
+const GameSchema = new mongoose.Schema({
+	RoundId: String,
+	Player1_name: String,
+	Player2_name: String,
+	Player1_id: String,
+	Player1_id: String,
+	RoundTime: Date,
+})
+
+const Game = new mongoose.model("Game", GameSchema)
 
 client.commands = new Collection();
 const commandFiles = fs.readdirSync('./src/commands').filter(file => file.endsWith('.js'));
@@ -22,10 +38,6 @@ for (const file of commandFiles) {
 	const command = require(`./commands/${file}`);
 	client.commands.set(command.data.name, command);
 }
-
-client.once('ready', () => {
-	console.log(`[${client.user.username}] `.blue + `[LogIn]`.cyan + `:Logged in to ${client.user.tag} at ${moment().format('MMMM Do YYYY, h:mm:ss a')}`);
-});
 
 client.on('interactionCreate', async interaction => {
 	if (!interaction.isCommand()) return;
@@ -43,3 +55,6 @@ client.on('interactionCreate', async interaction => {
 });
 
 client.login(token)
+module.exports = {
+	Game,
+}
